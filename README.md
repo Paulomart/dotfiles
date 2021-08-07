@@ -7,5 +7,5 @@ OSX.
 
 Setup like this on macOS directly after finishing the installation:
 ```
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/larspapen/dotfiles/master/setup_macos.sh)"
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/paulomart/dotfiles/master/setup_macos.sh)"
 ```
