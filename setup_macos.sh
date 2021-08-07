@@ -17,76 +17,61 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-CLI_BREWS=(
+BREW_FORMULA=(
     git
     gh
     htop
+    fish
     mas
-    neovim
-    nvm
     pritunl
-    python3
-    tmux
     wget
     z
 )
 
 APP_BREWS=(
     1password
-    alfred
     bitwarden
     caffeine
     db-browser-for-sqlite
     discord
     docker
     firefox
-    github
+    vivaldi
     google-chrome
     iterm2
     microsoft-teams
-    monitorcontrol
-    mysqlworkbench
-    postman
-    pycharm
-    rider
-    spotify
     telegram-desktop
-    virtualbox
     visual-studio-code
     vmware-fusion
-    webstorm
-    whatsapp
 )
 
 brew install $CLI_BREWS
 brew install --cask $APP_BREWS
 
-mas install 1295203466
-
-if [[ ! "$(echo $SHELL)" == "/bin/zsh" && ! "$(echo $SHELL)" == "/usr/bin/zsh" ]]
-then
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-
 compaudit | xargs chmod g-w
 
 # Setup
-mkdir "~/5Minds"
+mkdir "~/dev"
 mkdir "~/.ssh"
 
-git clone git://github.com/larspapen/dotfiles.git $REPO_NAME
+git clone git://github.com/paulomart/dotfiles.git $REPO_NAME
 git config --global core.excludesfile '~/.gitignore'
 git config --global pull.rebase true
-git config --global init.defaultBranch main
+git config --global init.defaultBranch master
 git config --global advice.statusHints false
 
+code --install-extension bungcip.better-toml
+code --install-extension mikestead.dotenv
 code --install-extension editorconfig.editorconfig
-code --install-extension k--kato.docomment
-code --install-extension shardulm94.trailing-spaces
-code --install-extension stkb.rewrap
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension eamodio.gitlens
+code --install-extension oderwat.indent-rainbow
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension esbenp.prettier-vscode
+code --install-extension vscode-icons-team.vscode-icons
+code --install-extension redhat.vscode-yaml
 
 ln -sf "${DOTFILES_PATH}/git/.gitignore" $HOME
-ln -sf "${DOTFILES_PATH}/zsh/.zshrc" $HOME
 
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
@@ -101,7 +86,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # cd ~/5Minds/${REPO_NAME}/FlappyBird && python3 -m venv venv && source ./venv/bin/activate && pip3 install pygame &&
 
 # Finish
-echo "You may stillt want to configure the following things:"
+echo "You may still want to configure the following things:"
 echo "  - Request password after lock immediately"
 echo "  - Run: 'compaudit | xargs chmod g-w' if there are insecure directories"
 echo "Reboot."
