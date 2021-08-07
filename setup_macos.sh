@@ -31,7 +31,7 @@ BREW_FORMULA=(
     z
 )
 
-APP_BREWS=(
+BREW_CASKS=(
     1password
     bitwarden
     caffeine
@@ -48,8 +48,8 @@ APP_BREWS=(
     vmware-fusion
 )
 
-brew install $CLI_BREWS
-brew install --cask $APP_BREWS
+brew install $BREW_FORMULA
+brew install --cask $BREW_CASKS
 
 compaudit | xargs chmod g-w
 
