@@ -23,6 +23,9 @@ BREW_FORMULA=(
     htop
     fish
     mas
+    nvm
+    jabba
+    pyenv
     pritunl
     wget
     z
